@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\yangd\\research\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\post\\post.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\post\\post.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\post\\post.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\post\\post.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\post\\post.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\post\\post.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\quotes\\quotes.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\quotes\\quotes.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\quotes\\quotes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\quotes\\quotes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\products\\products.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\products\\products.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yangd\\research\\src\\app\\products\\products.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\products\\products.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,29 +42,77 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "post.html",
               "DocumentMoniker": "C:\\Users\\yangd\\research\\src\\app\\post\\post.html",
               "RelativeDocumentMoniker": "src\\app\\post\\post.html",
               "ToolTip": "C:\\Users\\yangd\\research\\src\\app\\post\\post.html",
               "RelativeToolTip": "src\\app\\post\\post.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAowBwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-10-20T12:02:40.264Z",
+              "WhenOpened": "2026-10-21T10:28:58.876Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "post.ts",
               "DocumentMoniker": "C:\\Users\\yangd\\research\\src\\app\\post\\post.ts",
               "RelativeDocumentMoniker": "src\\app\\post\\post.ts",
               "ToolTip": "C:\\Users\\yangd\\research\\src\\app\\post\\post.ts",
               "RelativeToolTip": "src\\app\\post\\post.ts",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAMAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAowKwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-10-20T12:00:01.589Z",
+              "WhenOpened": "2026-10-21T10:27:03.777Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "products.html",
+              "DocumentMoniker": "C:\\Users\\yangd\\research\\src\\app\\products\\products.html",
+              "RelativeDocumentMoniker": "src\\app\\products\\products.html",
+              "ToolTip": "C:\\Users\\yangd\\research\\src\\app\\products\\products.html",
+              "RelativeToolTip": "src\\app\\products\\products.html",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAowBwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-10-21T10:24:32.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "products.ts",
+              "DocumentMoniker": "C:\\Users\\yangd\\research\\src\\app\\products\\products.ts",
+              "RelativeDocumentMoniker": "src\\app\\products\\products.ts",
+              "ToolTip": "C:\\Users\\yangd\\research\\src\\app\\products\\products.ts",
+              "RelativeToolTip": "src\\app\\products\\products.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-21T10:23:11.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "quotes.ts",
+              "DocumentMoniker": "C:\\Users\\yangd\\research\\src\\app\\quotes\\quotes.ts",
+              "RelativeDocumentMoniker": "src\\app\\quotes\\quotes.ts",
+              "ToolTip": "C:\\Users\\yangd\\research\\src\\app\\quotes\\quotes.ts",
+              "RelativeToolTip": "src\\app\\quotes\\quotes.ts",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAAKgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-21T10:01:52.297Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "quotes.html",
+              "DocumentMoniker": "C:\\Users\\yangd\\research\\src\\app\\quotes\\quotes.html",
+              "RelativeDocumentMoniker": "src\\app\\quotes\\quotes.html",
+              "ToolTip": "C:\\Users\\yangd\\research\\src\\app\\quotes\\quotes.html",
+              "RelativeToolTip": "src\\app\\quotes\\quotes.html",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAowBwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-10-21T09:46:07.395Z"
             }
           ]
         }

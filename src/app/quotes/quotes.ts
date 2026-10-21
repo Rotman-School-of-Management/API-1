@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { ProductService } from '../services/product';
 import { QuoteService } from '../services/quote';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ import { CartService } from '../cart.service';
 export class Quotes implements OnInit {
 
   private dataService = inject(DataService);
-
+  private cdr = inject(ChangeDetectorRef);
 
   // Properties to hold your data
   products: any[] = [];
@@ -46,11 +46,13 @@ export class Quotes implements OnInit {
         this.quotes = response.quotes.quotes;
         this.filteredQuotes = [...this.quotes];// loading all quotes into filteredQuotes initially
         this.isLoading = false;
+        this.cdr.detectChanges();
       },
 
       error: (err) => {
         console.error('Error fetching DummyJSON data:', err);
         this.isLoading = false;
+        this.cdr.detectChanges();
       }
     });
 
