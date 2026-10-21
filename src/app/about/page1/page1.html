@@ -1,0 +1,14 @@
+<p>page1 works!</p>
+
+<div style="padding: 20px;">
+  <h2>Upload CSV File</h2>
+  <!-- File Input -->
+  <input type="file" (change)="onFileChange($event)" accept=".csv" />
+
+  <hr />
+
+  <!-- Data Table -->
+  @for (row of csvData; track row.id) {
+  <div>{{ row }}</div>
+}
+</div>

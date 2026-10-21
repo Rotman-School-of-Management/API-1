@@ -1,0 +1,29 @@
+
+
+
+
+
+<h2>CSV filt to Table Page</h2>
+<nav>
+  <a href="./about/Page1">Subpage 1</a> | 
+  <a href="./about/Page2">Subpage 2</a>
+</nav>
+
+<div class="container">
+  <h3>Upload CSV File</h3>
+  <input type="file" (change)="onFileChange($event)" accept=".csv" />
+
+  <table *ngIf="csvData.length > 0" border="1">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of csvData">
+        <td *ngFor="let header of headers">{{ row[header] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

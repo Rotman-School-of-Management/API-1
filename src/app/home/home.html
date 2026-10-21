@@ -1,0 +1,10 @@
+
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <input formControlName="username" placeholder="Username" />
+  <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+    <small *ngIf="userForm.get('username')?.errors?.['required']">Required.</small>
+  </div>
+  <input formControlName="email" placeholder="Email" />
+  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>
