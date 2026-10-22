@@ -114,7 +114,7 @@
   }
 
   .cart-summary {
-    // border: 1px solid #d1d5db;
+
     border-radius: 8px;
     font-size: 20px;
     margin-top: 20px;
@@ -145,9 +145,11 @@
   </div>
 
 
-  <div class="quotes-grid">
+  <div class="posts-grid">
 
-    <div class="quote-card" *ngFor="let q of filteredQuotes | slice:0:9">
+
+
+    <div class="post-card" *ngFor="let q of filteredQuotes | slice:0:9">
       <span class="quote-icon">“</span>
       <blockquote class="quote-text">{{ q.quote }}</blockquote>
       <cite class="quote-author">— {{ q.author }}</cite>

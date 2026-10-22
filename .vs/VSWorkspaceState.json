@@ -3,7 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\post"
+    "\\src\\app\\post",
+    "\\src\\app\\quotes"
   ],
+  "SelectedNode": "\\src\\app\\post\\post.html",
   "PreviewInSolutionExplorer": false
 }
