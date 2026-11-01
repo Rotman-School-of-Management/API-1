@@ -1,25 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ProductService } from './services/product';
+
 
 @Component({
   selector: 'app-root',
   standalone: false,
   styleUrl: './app.css',
   templateUrl: './app.html',
+ // 1. Set strategy to OnPush so Angular ignores default digest cycles for this component
+  changeDetection: ChangeDetectionStrategy.OnPush 
 })
 export class App implements OnInit {
-  products: any[] = [];
-  rawJsonString: string = '';
+   products: any[] = [];
+  errorMessage: string = '';
 
-  constructor(private productService: ProductService) {}
+  
+  constructor(private productService: ProductService,
+    private cdr: ChangeDetectorRef ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
-        this.rawJsonString = JSON.stringify(data, null, 2); // Convert response object array back to plain text JSON string
+         this.cdr.markForCheck(); 
       },
-      error: (err) => console.error('Error fetching data:', err)
+      error: (err) => {
+        this.errorMessage = 'Failed to load products from API';
+        console.error(err);
+           // Notify Angular to display the error block
+        this.cdr.markForCheck(); 
+      }
     });
   }
 }
