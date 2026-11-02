@@ -42,9 +42,9 @@
 <div style="padding: 20px;">
   <h3>{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h3>
   <form (ngSubmit)="saveProduct()">
-    <input [(ngModel)]="currentProduct.name" name="name" placeholder="Product Name" required /><br><br>
-    <input type="number" [(ngModel)]="currentProduct.price" name="price" placeholder="Price" required /><br><br>
-    <input type="number" [(ngModel)]="currentProduct.stock" name="stock" placeholder="Stock" required /><br><br>
+   Item Name: <input [(ngModel)]="currentProduct.name" name="name" placeholder="Product Name" required /><br><br>
+   Price: <input type="number" [(ngModel)]="currentProduct.price" name="price" placeholder="Price" required /><br><br>
+   Id: <input type="number" [(ngModel)]="currentProduct.id" name="id" placeholder="id" required /><br><br>
 
     <button type="submit">{{ isEditMode ? 'Update' : 'Save' }}</button>
     <button type="button" *ngIf="isEditMode" (click)="resetForm()">Cancel</button>
