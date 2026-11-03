@@ -15,7 +15,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 export class App implements OnInit {
   products: Product[] = [];
  // etc1: boolean | null = null; 
-  
+   public totalCount: number = 0; // To hold the count of filtered events
+
   
   // Track form state
   currentProduct: Product = { id: 0, uxnameF: '', uxname: '', uxemail: '',etc1: '',etc2: '',};
@@ -35,6 +36,7 @@ export class App implements OnInit {
       next: (data) => {
         this.products = data;
         this.cdr.markForCheck(); 
+         this.totalCount =  this.products.length;
       }
     });
   }

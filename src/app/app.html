@@ -3,6 +3,35 @@
 
 
 <style>
+table {
+border-collapse: collapse; width: 80%;
+margin-left: auto;
+margin-right: auto;
+}
+table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Color for even rows */
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff; /* Color for odd rows */
+}
+
+.count {
+    background-color: #3498db;
+    width: 200px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    color: white;
+    border-radius: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 30px; /* Adjust font size to your liking */
+    font-weight: bold;
+  }
 .custom-table {
   width: 100%;
   border-collapse: collapse;
@@ -101,7 +130,7 @@
 
 
 <div style="padding: 20px;">
-  <h3>{{ isEditMode ? 'Edit Item' : 'Add Item' }}</h3>
+  <h3>{{ isEditMode ? 'Edit Subsciber' : 'Add Subscriber' }}</h3>
   <form (ngSubmit)="saveProduct()"  class="input-form">
     <div class="input-group">
     <label for="input1">First Name</label>
@@ -150,8 +179,14 @@
 
   <hr>
 
-  <h3>Angular Frontend Fetched MS Sql Data</h3>
-  <table border="1" cellpadding="5" style="border-collapse: collapse; width: 100%;">
+  <h3>MS Sql Data of Insights Hub Subscribers </h3>
+    <h4>(Angular Frontend and .Net Api Backend) </h4>
+
+
+  <div class="count">
+    <span style="font-size:16px;"> Subscriber count:</span>   {{ totalCount }}
+</div>
+  <table border="1" cellpadding="6" >
     <thead>
       <tr>
         <th>Fist Name</th>
@@ -170,8 +205,8 @@
 	           <td>{{ product.etc1 }}</td>
                <td>{{ product.etc2 }}</td>
         <td>
-          <button (click)="editProduct(product)" class="btn btn-primary">Edit</button>
-          <button (click)="deleteProduct(product.id)" class="btn btn-primary">Delete</button>
+          <button (click)="editProduct(product)" class="btn btn-primary me-2" style="--bs-btn-padding-y: .15rem; --bs-btn-font-size: .75rem;">Edit</button>
+          <button (click)="deleteProduct(product.id)" class="btn btn-primary" style="--bs-btn-padding-y: .15rem; --bs-btn-font-size: .75rem;">Delete</button>
         </td>
       </tr>
     </tbody>
