@@ -1,3 +1,7 @@
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+
 <style>
 .custom-table {
   width: 100%;
@@ -23,46 +27,129 @@
   background-color: #f1f5f9;
 }
 
+
+.json-viewer {
+  background-color: #1e1e1e;
+  color: #dcdcdc;
+  padding: 16px;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.input-form {
+  display: flex;
+  gap: 16px; /* Space between input columns */
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column; /* Stacks label above the input */
+   flex: 1 1 calc(33.333% - 1rem); /* 3 per line minus gap */
+}
+.button-group,
+.btn-group {
+  clear: both;
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+
+}
+.button-group .btn {
+  height: 100%;
+}
+.input-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+  width: 100%;
+}
+
 </style>
 
 
+<div style="padding: 20px;">
+  <h3>{{ isEditMode ? 'Edit Item' : 'Add Item' }}</h3>
+  <form (ngSubmit)="saveProduct()"  class="input-form">
+    <div class="input-group">
+    <label for="input1">First Name</label>
+   <input [(ngModel)]="currentProduct.uxnameF" name="uxnameF" placeholder="First Name" required />
+    </div>
 
-<div style="padding: 20px; font-family: sans-serif;">
-  <h2>Product Dashboard</h2>
+  <div class="input-group">
+   <label for="input2">Last Name</label>
+   <input [(ngModel)]="currentProduct.uxname" name="uxname" placeholder="Last Name" required />
+    </div>
 
-  <!-- Error Alert -->
-  <div *ngIf="errorMessage" style="color: red; margin-bottom: 15px;">
-    {{ errorMessage }}
+  <div class="input-group">
+  <label for="input3"> Email</label>
+   <input [(ngModel)]="currentProduct.uxemail" name="uxemail" placeholder="Email" required />
   </div>
 
-  <!-- SECTION 1: Standard HTML Datatable -->
-  <h3>1. Product Datatable</h3>
-  <table class="custom-table">
-    <thead>
-      <tr style="background-color: #f2f2f2; text-align: left;">
-        <th>ID</th>
-        <th>Product Name</th>
-        <th>Price</th>
+  <div class="input-group">
+    <label for="input4"> Event Update</label>
+     <input [(ngModel)]="currentProduct.etc1" name="etc1" placeholder="Event Update" required />
+  </div>
 
+  <div class="input-group">
+    <label for="input5"> Magazine Update</label>
+     <input [(ngModel)]="currentProduct.etc2" name="etc2" placeholder="Magazine Update" required />
+  </div>
+   <!-- This will drop to the next line -->
+  <div class="button-group">
+    <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Save' }}</button>
+    <button type="button" *ngIf="isEditMode" (click)="resetForm()" class="btn btn-primary">Cancel</button>
+    </div>
+  </form>
+
+  <hr>
+
+  <h3>Angular Frontend Fetched MS Sql Data</h3>
+  <table border="1" cellpadding="5" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Fist Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Update1</th>
+        <th>Update2</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price | currency }}</td>
-
-
-      </tr>
-      <tr *ngIf="products.length === 0 && !errorMessage">
-        <td colspan="4" style="text-align: center;">Loading products...</td>
+	          <td>{{ product.uxnameF }}</td>
+	           <td>{{ product.uxname }}</td>
+	           <td>{{ product.uxemail }}</td>
+	           <td>{{ product.etc1 }}</td>
+               <td>{{ product.etc2 }}</td>
+        <td>
+          <button (click)="editProduct(product)" class="btn btn-primary">Edit</button>
+          <button (click)="deleteProduct(product.id)" class="btn btn-primary">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
-
-  <!-- SECTION 2: Raw JSON View -->
-  <h3>2. Raw JSON Output</h3>
-  <pre style="background-color: #f4f4f4; padding: 15px; border: 1px solid #ddd; border-radius: 4px; max-height: 300px; overflow-y: auto;">
-    {{ products | json }}
-  </pre>
 </div>
+
+
+
+  <!-- SECTION 2: Raw JSON View
+  <h3>2. Raw JSON Output</h3>
+  <pre class="json-viewer">
+    {{ products | json }}
+  </pre>-->
+

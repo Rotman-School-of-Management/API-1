@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'; // Import this
 import { App } from './app';
 
 @NgModule({
-  declarations: [App],
+  declarations: [],
   imports: [
     BrowserModule,  CommonModule ,
     HttpClientModule // Add this to imports
