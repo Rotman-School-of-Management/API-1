@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common'; // 1. Import from @angular/common
 import {  Product, ProductService } from './services/product';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,8 @@ import {  Product, ProductService } from './services/product';
 })
 export class App implements OnInit {
   products: Product[] = [];
+ // etc1: boolean | null = null; 
+  
   
   // Track form state
   currentProduct: Product = { id: 0, uxnameF: '', uxname: '', uxemail: '',etc1: '',etc2: '',};

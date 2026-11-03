@@ -77,6 +77,25 @@
   box-sizing: border-box; /* Ensures padding doesn't break width */
   width: 100%;
 }
+/* Target the dropdown using a class selector */
+    .custom-dropdown {
+      width: 100px;
+      padding: 8px;
+      font-size: 16px;
+      background-color: #fff;
+
+      /* Style the box border */
+      border: 2px solid #0076ff; /* width, style, color */
+      border-radius: 6px;        /* rounds the corners */
+    }
+
+    /* Style the border when a user clicks/focuses on it */
+    .custom-dropdown:focus {
+      outline: none; /* removes the default browser blue outline */
+      border-color: #004baf; /* changes border color on focus */
+    }
+
+
 
 </style>
 
@@ -101,12 +120,26 @@
 
   <div class="input-group">
     <label for="input4"> Event Update</label>
-     <input [(ngModel)]="currentProduct.etc1" name="etc1" placeholder="Event Update" required />
+
+ <select name="etc1" [(ngModel)]="currentProduct.etc1" class="custom-dropdown">
+    <!-- Single quotes around 'Y' are required for string literals -->
+    <option [ngValue]="''">Select</option>
+    <option [ngValue]="'Y'">YES</option>
+    <option [ngValue]="'N'">NO</option>
+  </select>
+
+
+
   </div>
 
   <div class="input-group">
     <label for="input5"> Magazine Update</label>
-     <input [(ngModel)]="currentProduct.etc2" name="etc2" placeholder="Magazine Update" required />
+    <select name="etc2" [(ngModel)]="currentProduct.etc2" class="custom-dropdown">
+       <!-- Single quotes around 'Y' are required for string literals -->
+       <option [ngValue]="''">Select</option>
+       <option [ngValue]="'Y'">YES</option>
+       <option [ngValue]="'N'">NO</option>
+  </select>
   </div>
    <!-- This will drop to the next line -->
   <div class="button-group">
