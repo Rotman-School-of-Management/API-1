@@ -123,6 +123,42 @@ table tr:nth-child(odd) {
       outline: none; /* removes the default browser blue outline */
       border-color: #004baf; /* changes border color on focus */
     }
+.switch-container {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch-container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
 
 
 
@@ -150,30 +186,41 @@ table tr:nth-child(odd) {
   <div class="input-group">
     <label for="input4"> Event Update</label>
 
- <select name="etc1" [(ngModel)]="currentProduct.etc1" class="custom-dropdown">
-    <!-- Single quotes around 'Y' are required for string literals -->
-    <option [ngValue]="''">Select</option>
-    <option [ngValue]="'Y'">YES</option>
-    <option [ngValue]="'N'">NO</option>
-  </select>
+ <label class="switch-container">
+    <input
+      type="checkbox"
+      name="etc1"
+      [checked]="currentProduct.etc1 === 'Y'"
+      (change)="currentProduct.etc1 = $event.target.checked ? 'Y' : 'N'">
+    <span class="slider round"></span>
 
+</label>
+    <span class="label-text">{{ currentProduct.etc1 === 'Y' ? 'YES' : 'NO' }}</span>
 
 
   </div>
 
   <div class="input-group">
     <label for="input5"> Magazine Update</label>
-    <select name="etc2" [(ngModel)]="currentProduct.etc2" class="custom-dropdown">
-       <!-- Single quotes around 'Y' are required for string literals -->
-       <option [ngValue]="''">Select</option>
-       <option [ngValue]="'Y'">YES</option>
-       <option [ngValue]="'N'">NO</option>
-  </select>
+
+
+  <label class="switch-container">
+    <input
+      type="checkbox"
+      name="etc2"
+      [checked]="currentProduct.etc2 === 'Y'"
+      (change)="currentProduct.etc2 = $event.target.checked ? 'Y' : 'N'">
+    <span class="slider round"></span>
+
+</label>
+   <span class="label-text">{{ currentProduct.etc2 === 'Y' ? 'YES' : 'NO' }}</span>
+
+
   </div>
    <!-- This will drop to the next line -->
   <div class="button-group">
-    <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Save' }}</button>
-    <button type="button" *ngIf="isEditMode" (click)="resetForm()" class="btn btn-primary">Cancel</button>
+    <button type="submit" class="btn btn-primary me-2" style="--bs-btn-padding-y: .15rem; --bs-btn-font-size: .75rem;">{{ isEditMode ? 'Update' : 'Save' }}</button>
+    <button type="button" *ngIf="isEditMode" (click)="resetForm()" class="btn btn-primary me-2" style="--bs-btn-padding-y: .15rem; --bs-btn-font-size: .75rem;">Cancel</button>
     </div>
   </form>
 
@@ -220,4 +267,3 @@ table tr:nth-child(odd) {
   <pre class="json-viewer">
     {{ products | json }}
   </pre>-->
-
