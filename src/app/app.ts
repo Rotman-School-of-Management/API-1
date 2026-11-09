@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Faculty } from './service/faculty';
-import { FacFaculty } from './models/faculty.model';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FacultyService } from './service/faculty';
+
 
 @Component({
   selector: 'app-root',
@@ -10,21 +10,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class App implements OnInit {
-  facultyList: FacFaculty[] = [];
-  errorMessage: string = '';
+export class App  implements OnInit {
+  faculty: any = null;
 
-  constructor(private facultyService: Faculty) {}
+  constructor(private facultyService: FacultyService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.facultyService.getFaculties().subscribe({
+    this.facultyService.getFacultyData().subscribe({
       next: (data) => {
-        this.facultyList = data;
-        console.log('Data found:', this.facultyList);
+        this.faculty = data;
+          this.cdr.markForCheck();
       },
       error: (err) => {
-        this.errorMessage = 'Could not load data records.';
-        console.error(err);
+        console.error('Error fetching XML data', err);
       }
     });
   }

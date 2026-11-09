@@ -1,30 +1,14 @@
-<div style="padding: 20px; font-family: Arial, sans-serif;">
-  <h2>Faculty Members & Individual Publications</h2>
+<div *ngIf="faculty" class="faculty-card">
+  <h2>{{ faculty.lastName }} (ID: {{ faculty.id }})</h2>
+  <p><strong>Faculty ID:</strong> {{ faculty.facultyId }}</p>
+  <p><strong>Division:</strong> {{ faculty.division }}</p>
 
-  <div *ngIf="errorMessage" style="color: red; font-weight: bold;">
-    {{ errorMessage }}
-  </div>
-
-  <div *ngIf="facultyList.length === 0 && !errorMessage">
-    Loading profiles...
-  </div>
-
-  <div *ngFor="let faculty of facultyList" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 6px;">
-    <h3 style="margin: 0; color: #2c3e50;">{{ faculty.LName }}</h3>
-    <p style="margin: 5px 0; color: #7f8c8d;"><strong>Department:</strong> {{ faculty.Division }}</p>
-
-    <h4 style="margin-top: 10px; margin-bottom: 5px; color: #34495e;">Publications:</h4>
-
-    <!-- Render Nested Publications List -->
-    <ul *ngIf="faculty.publications && faculty.publications.length > 0; else noPubs">
-      <li *ngFor="let pub of faculty.publications">
-        <strong>{{ pub.Title }}</strong> ({{ pub.YearPublished }})
-      </li>
-    </ul>
+  <h3>Publications</h3>
+  <ul>
+    <li *ngFor="let pub of faculty.publications">
+      <strong>{{ pub.title }}</strong> ({{ pub.year }})
+    </li>
+  </ul>
 
 
-    <ng-template #noPubs>
-      <p style="font-style: italic; color: #95a5a6;">No publications documented.</p>
-    </ng-template>
-  </div>
 </div>

@@ -1,13 +1,20 @@
-export interface FacPublication {
-  PublicationsID: number;
+export interface Publication {
   Title: string;
-  YearPublished: number;
-  FacultyID: string;
+  YearPublished: string;
 }
 
-export interface FacFaculty {
+export interface Faculty {
+ '@attributes'?: { Id: number }; // Captures <Faculty Id="272">
   FacultyID: string;
-  LName: string;
+  LastName: string;
   Division: string;
-  publications: FacPublication[];
+  Publications: {
+    Publication: Publication | Publication[]; // Can be an object or an array depending on XML structure
+  };
+}
+
+export interface FacultyDataResponse {
+  FacultyData: {
+    Faculty: Faculty;
+  };
 }
