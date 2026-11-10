@@ -1,0 +1,65 @@
+// src/app/services/faculty.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FacultyService {
+  private apiUrl = 'http://localhost:5115/api/faculty';
+
+  constructor(private http: HttpClient) { }
+
+  // Fetch all faculty records and transform raw xml string into an array of objects
+  getFacultyList(): Observable<any[]> {
+    return this.http.get(this.apiUrl, { responseType: 'text' }).pipe(
+      map(xmlString => this.parseFacultyXmlList(xmlString))
+    );
+  }
+
+  // Fetch individual record
+  getFacultyById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
+      map(xmlString => this.parseSingleFacultyXml(xmlString))
+    );
+  }
+
+  private parseFacultyXmlList(xmlText: string): any[] {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+    const facultyNodes = xmlDoc.getElementsByTagName('Faculty');
+    const list: any[] = [];
+
+    for (let i = 0; i < facultyNodes.length; i++) {
+      list.push(this.extractFacultyData(facultyNodes[i]));
+    }
+    return list;
+  }
+
+  private parseSingleFacultyXml(xmlText: string): any {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+    const facultyNode = xmlDoc.getElementsByTagName('Faculty')[0];
+    return facultyNode ? this.extractFacultyData(facultyNode) : null;
+  }
+
+  private extractFacultyData(node: Element): any {
+    const id = node.getElementsByTagName('Id')[0]?.textContent;
+    const name = node.getElementsByTagName('LastName')[0]?.textContent;
+    const department = node.getElementsByTagName('Division')[0]?.textContent;
+
+    const publicationNodes = node.getElementsByTagName('Publication');
+    const publications: any[] = [];
+
+    for (let j = 0; j < publicationNodes.length; j++) {
+      publications.push({
+        id: publicationNodes[j].getElementsByTagName('Id')[0]?.textContent,
+        title: publicationNodes[j].getElementsByTagName('Title')[0]?.textContent,
+        year: publicationNodes[j].getElementsByTagName('YearPublished')[0]?.textContent,
+      });
+    }
+
+    return { id, name, department, publications };
+  }
+}
