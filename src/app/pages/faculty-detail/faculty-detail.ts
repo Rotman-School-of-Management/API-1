@@ -1,5 +1,5 @@
 // src/app/pages/faculty-detail/faculty-detail.component.ts
-import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FacultyService } from '../../services/faculty';
@@ -12,6 +12,8 @@ import { FacultyService } from '../../services/faculty';
 })
 export class FacultyDetail implements OnInit {
   facultyMember: any = null;
+  loading = true;
+  errorMessage = '';
   private cdr = inject(ChangeDetectorRef);
   constructor(
     private route: ActivatedRoute,
@@ -19,10 +21,25 @@ export class FacultyDetail implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const idValue = this.route.snapshot.paramMap.get('id');
+    const id = Number(idValue);
+
+    if (!idValue || !Number.isInteger(id) || id < 1) {
+      this.loading = false;
+      this.errorMessage = 'The faculty ID is invalid.';
+      return;
+    }
+
     this.facultyService.getFacultyById(id).subscribe(data => {
       this.facultyMember = data;
       this.cdr.detectChanges(); 
+      this.loading = false;
+      if (!data) {
+        this.errorMessage = 'Faculty member not found.';
+      }
+    }, () => {
+      this.loading = false;
+      this.errorMessage = 'Unable to load this faculty member.';
     });
   }
 }

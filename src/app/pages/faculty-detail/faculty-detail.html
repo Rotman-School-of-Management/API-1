@@ -1,17 +1,25 @@
 <!-- src/app/pages/faculty-detail/faculty-detail.component.html -->
-<div *ngIf="facultyMember" style="padding: 20px; font-family: sans-serif;">
+<div style="padding: 20px; font-family: sans-serif;">
   <a routerLink="/">⬅ Back to Directory</a>
 
-  <h2 style="margin-top: 20px;">{{ facultyMember.name }}</h2>
-  <p><strong>Department:</strong> {{ facultyMember.department }}</p>
+  <p *ngIf="loading">Loading faculty member...</p>
+  <p *ngIf="errorMessage" style="color: #b00020;">{{ errorMessage }}</p>
 
-  <h3>Publications</h3>
-  <div *ngIf="facultyMember.publications.length === 0">No publications found for this faculty member.</div>
+  <ng-container *ngIf="facultyMember && !errorMessage">
+    <h2 style="margin-top: 20px;">{{ facultyMember.name }}</h2>
+    <p><strong>Department:</strong> {{ facultyMember.department }}</p>
 
-  <ul *ngIf="facultyMember.publications.length > 0">
-    <li *ngFor="let pub of facultyMember.publications" style="margin-bottom: 10px;">
-      "<strong>{{ pub.title }}</strong>" — Published in {{ pub.year }}
-    </li>
-  </ul>
+    <h3>Publications</h3>
+    <div *ngIf="facultyMember.publications.length === 0">No publications found for this faculty member.</div>
+
+    <ul *ngIf="facultyMember.publications.length > 0">
+      <li *ngFor="let pub of facultyMember.publications" style="margin-bottom: 10px;">
+        "<strong>{{ pub.title }}</strong>" — Published in {{ pub.year }}
+      </li>
+    </ul>
+  </ng-container>
 </div>
+
+
+
 

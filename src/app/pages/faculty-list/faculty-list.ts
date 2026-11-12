@@ -20,6 +20,8 @@ export class FacultyList implements OnInit {
   ngOnInit(): void {
     this.facultyService.getFacultyList().subscribe(data => {
       this.facultyMembers = data;
+
+      console.log('Sample faculty member:', this.facultyMembers[0]);
       this.cdr.detectChanges(); 
     });
   }

@@ -1,0 +1,82 @@
+﻿// src/app/services/faculty.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FacultyService {
+  private apiUrl = 'http://localhost:5115/api/faculty';
+
+  constructor(private http: HttpClient) { }
+
+  // Fetch all faculty records and transform raw xml string into an array of objects
+  getFacultyList(): Observable<any[]> {
+    return this.http.get(this.apiUrl, { responseType: 'text' }).pipe(
+      map(xmlString => this.parseFacultyXmlList(xmlString))
+    );
+  }
+
+  // Fetch individual record
+  getFacultyById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
+      map(xmlString => this.parseSingleFacultyXml(xmlString))
+    );
+  }
+
+  private parseFacultyXmlList(xmlText: string): any[] {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+    const facultyNodes = this.findElements(xmlDoc, 'faculty');
+    const list: any[] = [];
+
+    for (let i = 0; i < facultyNodes.length; i++) {
+      list.push(this.extractFacultyData(facultyNodes[i]));
+    }
+    return list;
+  }
+
+  private parseSingleFacultyXml(xmlText: string): any {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+    const facultyNode = this.findElements(xmlDoc, 'faculty')[0];
+    return facultyNode ? this.extractFacultyData(facultyNode) : null;
+  }
+
+  private extractFacultyData(node: Element): any {
+    const id = this.findElements(node, 'id')[0]?.textContent;
+    const name = this.findElements(node, 'lastname')[0]?.textContent;
+    const department = this.findElements(node, 'division')[0]?.textContent;
+
+    const publicationNodes = this.findElements(node, 'publication');
+    const publications: any[] = [];
+
+    for (let j = 0; j < publicationNodes.length; j++) {
+      publications.push({
+        id: this.findElements(publicationNodes[j], 'id')[0]?.textContent,
+        title: this.findElements(publicationNodes[j], 'title')[0]?.textContent,
+        year: this.findElements(publicationNodes[j], 'yearpublished')[0]?.textContent,
+      });
+    }
+
+    return { id, name, department, publications };
+  }
+
+  private findElements(parent: Document | Element, name: string): Element[] {
+    const elements: Element[] = [];
+    const root = parent instanceof Element ? parent : null;
+
+    if (root?.localName?.toLowerCase() === name) {
+      elements.push(root);
+    }
+
+    for (const element of Array.from(parent.getElementsByTagName('*'))) {
+      if (element.localName.toLowerCase() === name) {
+        elements.push(element);
+      }
+    }
+
+    return elements;
+  }
+}

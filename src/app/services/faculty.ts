@@ -20,14 +20,15 @@ export class FacultyService {
 
   // Fetch individual record
   getFacultyById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
-      map(xmlString => this.parseSingleFacultyXml(xmlString))
+    return this.getFacultyList().pipe(
+      map(facultyMembers => facultyMembers.find(member => Number(member.id) === id) ?? null)
     );
   }
 
   private parseFacultyXmlList(xmlText: string): any[] {
     const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+    //const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
     const facultyNodes = xmlDoc.getElementsByTagName('Faculty');
     const list: any[] = [];
 
