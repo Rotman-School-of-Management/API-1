@@ -1,0 +1,28 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Serialization;
+
+namespace FacultyApi.Models;
+{
+    [XmlRoot("Faculty")]
+public class Faculty
+{
+  [XmlElement("Id")]
+  public int Id { get; set; }
+
+  [XmlElement("FacultyID")]
+  public string FacultyID { get; set; } = string.Empty;
+
+  [XmlElement("LastName")]
+  public string LastName { get; set; } = string.Empty;
+
+  [XmlElement("FirstName")]
+  public string FirstName { get; set; } = string.Empty;
+
+  [XmlElement("Email")]
+  public string Email { get; set; } = string.Empty;
+
+  [XmlElement("Division")]
+  public string Division { get; set; } = string.Empty;
+}
+}
