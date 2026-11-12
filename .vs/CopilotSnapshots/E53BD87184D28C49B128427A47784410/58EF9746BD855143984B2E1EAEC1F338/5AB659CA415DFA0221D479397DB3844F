@@ -1,0 +1,28 @@
+﻿// src/app/pages/faculty-list/faculty-list.component.ts
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FacultyService } from '../../services/faculty';
+
+@Component({
+  selector: 'app-faculty-list',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './faculty-list.html'
+})
+export class FacultyList implements OnInit {
+  facultyMembers: any[] = [];
+  // Inject CDR directly as a class property
+  private cdr = inject(ChangeDetectorRef);
+
+  constructor(private facultyService: FacultyService) { }
+
+  ngOnInit(): void {
+    this.facultyService.getFacultyList().subscribe(data => {
+      this.facultyMembers = data;
+
+      console.log('Sample faculty member:', this.facultyMembers[0]);
+      this.cdr.detectChanges(); 
+    });
+  }
+}

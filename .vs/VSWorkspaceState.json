@@ -4,8 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\pages",
+    "\\src\\app\\pages\\faculty-detail",
+    "\\src\\app\\pages\\faculty-list",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\services\\faculty.ts",
+  "SelectedNode": "\\src\\app\\app.html",
   "PreviewInSolutionExplorer": false
 }

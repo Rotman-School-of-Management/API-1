@@ -1,25 +1,64 @@
-<!-- src/app/pages/faculty-list/faculty-list.component.html -->
-<div style="padding: 20px; font-family: sans-serif;">
-  <h2>Faculty Directory</h2>
-  <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr style="background-color: #f2f2f2;">
-        <th>Last Name</th>
-        <th>Division</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let member of facultyMembers">
-        <td><strong>{{ member.name }}</strong></td>
-        <td>{{ member.department }}</td>
-        <td>
-          <a [routerLink]="['/faculty', member.id]">View Publications ({{ member.publications.length }})</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
+<div class="directory-container">
+  <h2 class="directory-title">Faculty Directory</h2>
+
+
+
+  <div class="directory-layout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="filter-group">
+        <label for="search-input">Search Faculty</label>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="First name, last name, or title"
+          [value]="searchTerm"
+          (input)="updateSearchTerm($event)" />
+      </div>
+
+      <div class="filter-group">
+        <label for="division-select">Division</label>
+        <select
+          id="division-select"
+          [value]="selectedDivision"
+          (change)="updateDivision($event)">
+          <option value="">All divisions</option>
+          <option *ngFor="let division of divisions" [value]="division">
+            {{ division }}
+          </option>
+        </select>
+      </div>
+    </aside>
+
+    <!-- Main Table Area -->
+    <div class="table-wrapper">
+      <div class="table-wrapper">
+        <table class="faculty-table">
+
+          <thead>
+            <tr style="background-color: #f2f2f2;">
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Title</th>
+              <th>Division</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let member of filteredFacultyMembers">
+              <td class="member-name">{{ member.name }}</td>
+              <td class="member-name">{{ member.fname }}</td>
+              <td class="member-name">{{ member.title }}</td>
+              <td><span class="badge">{{ member.department }}</span></td>
+              <td>
+                <a class="action-link" [routerLink]="['/faculty', member.id]">View Publications ({{ member.publications.length }})</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
 

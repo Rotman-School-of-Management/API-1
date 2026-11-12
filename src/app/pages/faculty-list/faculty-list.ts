@@ -8,10 +8,13 @@ import { FacultyService } from '../../services/faculty';
   selector: 'app-faculty-list',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './faculty-list.html'
+  templateUrl: './faculty-list.html',
+  styleUrl: './faculty-list.css'
 })
 export class FacultyList implements OnInit {
   facultyMembers: any[] = [];
+  searchTerm = '';
+  selectedDivision = '';
   // Inject CDR directly as a class property
   private cdr = inject(ChangeDetectorRef);
 
@@ -24,5 +27,35 @@ export class FacultyList implements OnInit {
       console.log('Sample faculty member:', this.facultyMembers[0]);
       this.cdr.detectChanges(); 
     });
+  }
+
+  get filteredFacultyMembers(): any[] {
+    const searchTerm = this.searchTerm.trim().toLowerCase();
+
+    return this.facultyMembers.filter(member => {
+      const publicationTitles = (member.publications ?? [])
+        .map((publication: any) => publication.title ?? '')
+        .join(' ');
+      const division = String(member.department ?? '').trim();
+      const matchesDivision = !this.selectedDivision || division === this.selectedDivision;
+      const matchesSearch = !searchTerm || [member.fname, member.name, member.title, publicationTitles]
+        .some(value => String(value ?? '').toLowerCase().includes(searchTerm));
+
+      return matchesDivision && matchesSearch;
+    });
+  }
+
+  get divisions(): string[] {
+    return [...new Set(this.facultyMembers
+      .map(member => String(member.department ?? '').trim())
+      .filter(Boolean))].sort();
+  }
+
+  updateSearchTerm(event: Event): void {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+  }
+
+  updateDivision(event: Event): void {
+    this.selectedDivision = (event.target as HTMLSelectElement).value;
   }
 }

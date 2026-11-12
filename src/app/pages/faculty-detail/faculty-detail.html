@@ -1,24 +1,43 @@
-<!-- src/app/pages/faculty-detail/faculty-detail.component.html -->
-<div style="padding: 20px; font-family: sans-serif;">
-  <a routerLink="/">⬅ Back to Directory</a>
 
-  <p *ngIf="loading">Loading faculty member...</p>
+<div class="profile-container">
+  <a routerLink="/" class="back-link">⬅ Back to Directory</a>
+
+  <p *ngIf="loading" class="status-message loading">Loading faculty member...</p>
   <p *ngIf="errorMessage" style="color: #b00020;">{{ errorMessage }}</p>
 
-  <ng-container *ngIf="facultyMember && !errorMessage">
-    <h2 style="margin-top: 20px;">{{ facultyMember.name }}</h2>
-    <p><strong>Department:</strong> {{ facultyMember.department }}</p>
+  <!-- Left Sidebar -->
+  <aside class="sidebar">
+    <div class="filter-group">
+      <label for="search-input">Search Faculty</label>
+  
+    </div>
+  </aside>
 
-    <h3>Publications</h3>
-    <div *ngIf="facultyMember.publications.length === 0">No publications found for this faculty member.</div>
+  <!-- Main Table Area -->
+  <div class="wrapper">
 
-    <ul *ngIf="facultyMember.publications.length > 0">
-      <li *ngFor="let pub of facultyMember.publications" style="margin-bottom: 10px;">
-        "<strong>{{ pub.title }}</strong>" — Published in {{ pub.year }}
-      </li>
-    </ul>
-  </ng-container>
-</div>
+
+    <article *ngIf="facultyMember && !errorMessage" class="profile-card">
+      <header class="profile-header">
+        <h2 style="margin-top: 20px;">{{ facultyMember.name }}</h2>
+        <span class="department-badge">
+          Department: {{ facultyMember.department }}
+        </span>
+      </header>
+
+      <section class="publications-section">
+        <h3>Publications</h3>
+        <div *ngIf="facultyMember.publications.length === 0" class="empty-state">No publications found for this faculty member.</div>
+
+        <ul *ngIf="facultyMember.publications.length > 0" class="publication-list">
+          <li *ngFor="let pub of facultyMember.publications" class="publication-item">
+            <span class="pub-title">{{ pub.title }}</span>
+            <span class="pub-year">— Published in {{ pub.year }}</span>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </div>
 
 
 

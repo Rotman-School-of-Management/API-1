@@ -1,0 +1,48 @@
+.directory-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0; /* Prevents the sidebar from getting squished by the table */
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+  .filter-group input,
+  .filter-group select {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+
+.table-wrapper {
+  flex: 1; /* Allows the table area to take up the remaining space */
+  overflow-x: auto;
+}
+
+.faculty-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .directory-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

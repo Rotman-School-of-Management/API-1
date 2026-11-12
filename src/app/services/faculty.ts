@@ -48,6 +48,8 @@ export class FacultyService {
   private extractFacultyData(node: Element): any {
     const id = node.getElementsByTagName('Id')[0]?.textContent;
     const name = node.getElementsByTagName('LastName')[0]?.textContent;
+    const fname = node.getElementsByTagName('FirstName')[0]?.textContent;
+    const title = node.getElementsByTagName('Title')[0]?.textContent;
     const department = node.getElementsByTagName('Division')[0]?.textContent;
 
     const publicationNodes = node.getElementsByTagName('Publication');
@@ -61,6 +63,6 @@ export class FacultyService {
       });
     }
 
-    return { id, name, department, publications };
+    return { id, name,fname, title,  department, publications };
   }
 }

@@ -8,6 +8,7 @@ import { FacultyService } from '../../services/faculty';
   selector: 'app-faculty-detail',
   standalone: true,
   imports: [CommonModule, RouterModule],
+  styleUrl: './faculty-detail.css', 
   templateUrl: './faculty-detail.html'
 })
 export class FacultyDetail implements OnInit {
